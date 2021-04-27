@@ -1,35 +1,12 @@
 <?php
-include 'functions/utility-functions.php';
+include 'functions/names-functions.php';
 $fileName = 'names-short-list.txt';
+$fullNames = load_full_names($fileName);
 
-$lineNumber = 0;
+$firstNames = load_first_names($fullNames);
+$lastNames = load_last_names($fullNames);
 
 
-$FH = fopen("$fileName", "r");
-$nextName = fgets($FH);
-
-while(!feof($FH)) {
-  if($lineNumber % 2 == 0) {
-    $fullNames[] = trim(substr($nextName, 0, strpos($nextName, " --")));
-  }
-
-  $lineNumber++;
-  $nextName = fgets($FH);
-}
-
-// first names
-
-foreach($fullNames as $fullName) {
-  $startHere = strpos($fullName, ",") + 1;
-  $firstNames[] = trim(substr($fullName, $startHere));
-}
-
-// last names
-
-foreach($fullNames as $fullName) {
-  $stopHere = strpos($fullName, ",");
-  $lastNames[] = substr($fullName, 0, $stopHere);
-}
 
 // valid names
 
@@ -124,7 +101,7 @@ shuffle($modifiedNames);
 $counted = array_count_values($modifiedNames);
 arsort($counted);
 $modifiedNames = array_slice($counted, 0, 25);
-echo "<p>Here 25 modified unique names</p>";
+echo "<p>Here are 25 modified unique names</p>";
 echo '<ul>';
 foreach($modifiedNames as $i => $i) {
   echo "<li>$i</li>";
