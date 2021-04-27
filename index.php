@@ -10,7 +10,7 @@ $nextName = fgets($FH);
 
 while(!feof($FH)) {
   if($lineNumber % 2 == 0) {
-    $fullNames[] = trim(substr($nextName, 0, strpos($nextName, " ==")));
+    $fullNames[] = trim(substr($nextName, 0, strpos($nextName, " --")));
   }
 
   $lineNumber++;
@@ -33,11 +33,11 @@ foreach($fullNames as $fullName) {
 
 // valid names
 
-for($i = 0; $1 < sizeof($fullNames); $1++) {
+for($i = 0; $i < sizeof($fullNames); $i++) {
   if(ctype_alpha($lastNames[$i].$firstNames[$i])) {
     $validFirstNames[$i] = $firstNames[$i];
     $validLastNames[$i] = $lastNames[$i];
-    $validFullNames[$i]  $validLastNames[$i] . "," . $validFirstNames[$i];
+    $validFullNames[$i] = $validLastNames[$i] . "," . $validFirstNames[$i];
   }
 }
 
