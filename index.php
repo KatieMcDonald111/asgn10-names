@@ -105,4 +105,30 @@ foreach($commonLastNames as $i => $i) {
   echo "<li>$i</li>";
 }
 echo "</ul>";
+
+echo '<h2>25 Specially Unique Names</h2>';
+$specialNames = array_unique($validFullNames);
+$counted = array_count_values($specialNames);
+arsort($counted);
+$specialNames = array_slice($counted, 0, 25);
+echo "Here are 25 specially unique names</p>";
+echo '<ul>';
+foreach($specialNames as $i => $i) {
+  echo "<li>$i</li>";
+}
+echo "</ul>";
+
+echo '<h2>25 Modified Unique Names</h2>';
+$modifiedNames = array_unique($validFullNames);
+shuffle($modifiedNames);
+$counted = array_count_values($modifiedNames);
+arsort($counted);
+$modifiedNames = array_slice($counted, 0, 25);
+echo "<p>Here 25 modified unique names</p>";
+echo '<ul>';
+foreach($modifiedNames as $i => $i) {
+  echo "<li>$i</li>";
+}
+echo "</ul>";
+
 ?>
