@@ -1,37 +1,19 @@
 <?php
 
-  function dd($value) {
-   echo "<pre>";
-   var_dump($value);
-   echo "</pre>";
-   exit();
-  }
-
-/* For POST or GET request*/
-
-function is_post_request() {
-  return $_SERVER['REQUEST_METHOD'] == 'POST';
-}
-
-function is_get_request() {
-  return $_SERVER['REQUEST_METHOD'] == 'GET';
-}
-
-/* Errors & Redirects */
-
-function error_404() {
-  header($_SERVER["SERVER_PROTOCOL"] . " 404 Not Found");
+function dd($value) {
+  echo "<pre>";
+  var_dump($value);
+  echo "</pre>";
   exit();
 }
 
-function error_500() {
-  header($_SERVER["SERVER_PROTOCOL"] . " 500 Internal Server Error");
-  exit();
-}
+function array_most_common($array)
+{
+    $counted = array_count_values($array);
+    arsort($counted);
+    $top_ten = array_slice($counted, 0, 9);
+    return ($top_ten);        
 
-function redirect_to($location) {
-  header("Location: " . $location);
-  exit;
 }
 
 ?>
